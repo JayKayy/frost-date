@@ -61,7 +61,7 @@ func Main(req Request) (*Response, error) {
 	apiKey := os.Getenv("APIKEY")
 
 	if errla != nil || errlon != nil {
-		return nil, fmt.Errorf("Error parsing lat and lon as floats,", errla, errlon)
+		return nil, fmt.Errorf("Error parsing lat and lon as floats")
 	}
 
 	query := fmt.Sprintf("https://api.openweathermap.org/data/2.5/forecast/hourly?lat=%f&lon=%f&appid=%s&mode=json&cnt=96", lat, lon, apiKey)
@@ -71,7 +71,7 @@ func Main(req Request) (*Response, error) {
 	}
 	rawJson, err := io.ReadAll(r.Body)
 	if err != nil {
-		return nil, errors.New(fmt.Sprintf("Error with ioReadall", err))
+		return nil, errors.New(fmt.Sprint("Error with ioReadall", err))
 	}
 
 	var res ForecastRequest
@@ -98,7 +98,7 @@ func Main(req Request) (*Response, error) {
 	} else {
 		return &Response{
 			StatusCode: 200,
-			Body:       fmt.Sprintf("Frost Warning on the following dates for %f, %f!\n\n: %s", lat, lon, frostDays),
+			Body:       fmt.Sprintf("Frost Warning on the following dates for %f, %f! %s", lat, lon, frostDays),
 		}, nil
 	}
 }
