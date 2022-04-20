@@ -86,7 +86,7 @@ func Main(req Request) *Response {
 	// check for close to freezing temp in Kelvin
 	for _, day := range res.Daily {
 		if day.Temp.Min < 274 {
-			frostDays = fmt.Sprintf("%s<br/>", time.Unix(day.Dt, 0).String())
+			frostDays += fmt.Sprintf("%s<br/>", time.Unix(day.Dt, 0).String())
 		}
 	}
 
