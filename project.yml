@@ -8,5 +8,5 @@ packages:
         main: ''
         runtime: 'go:default'
         environment: { "APIKEY" : "a5b645f286d3682b08f88a109efea308"}
-        parameters: {}
+        parameters: { "lat" : "40.6976637", "lon" : "-74.1197639"}
 
