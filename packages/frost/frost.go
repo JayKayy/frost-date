@@ -69,7 +69,7 @@ func Main(req Request) *Response {
 	if r.StatusCode != 200 {
 		//return nil, errors.New(fmt.Sprint("Error with ioReadall", err))
 		return &Response{
-			Body: fmt.Sprintf("Error from query! %d\n%s\n", r.StatusCode, string(rawJson)),
+			Body: fmt.Sprintf("Error from query! %d<br/>%s<br/>", r.StatusCode, string(rawJson)),
 		}
 	}
 	defer r.Body.Close()
@@ -86,7 +86,7 @@ func Main(req Request) *Response {
 	// check for close to freezing temp in Kelvin
 	for _, day := range res.Daily {
 		if day.Temp.Min < 274 {
-			frostDays = fmt.Sprintf("%s\n", time.Unix(day.Dt, 0).String())
+			frostDays = fmt.Sprintf("%s<br/>", time.Unix(day.Dt, 0).String())
 		}
 	}
 
@@ -97,10 +97,10 @@ func Main(req Request) *Response {
 		}
 
 	} else {
-		frostDays = strings.TrimSuffix(frostDays, "\n")
+		frostDays = strings.TrimSuffix(frostDays, "<br/>")
 		return &Response{
 			StatusCode: 200,
-			Body:       fmt.Sprintf("Frost Warning on the following dates for %f, %f!\n %s", lat, lon, frostDays),
+			Body:       fmt.Sprintf("Frost Warning on the following dates for %f, %f!<br/> %s", lat, lon, frostDays),
 		}
 	}
 }
