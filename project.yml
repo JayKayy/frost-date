@@ -1,0 +1,12 @@
+environment: { "APIKEY" : "a5b645f286d3682b08f88a109efea308"}
+packages:
+  - name: frost
+    environment: {}
+    parameters: {}
+    actions:
+      - name: frost
+        main: ''
+        runtime: 'go:default'
+        environment: { "APIKEY" : "a5b645f286d3682b08f88a109efea308"}
+        parameters: {}
+
