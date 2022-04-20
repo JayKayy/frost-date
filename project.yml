@@ -1,12 +1,11 @@
 packages:
   - name: frost
     environment: {}
-      parameters: {}
+    parameters: {}
     actions:
       - name: frost
         main: ''
         runtime: 'go:default'
         environment:  
           APIKEY : "${APIKEY}"
-          #  parameters: { "lat" : "40.6976637", "lon" : "-74.1197639"}
 
